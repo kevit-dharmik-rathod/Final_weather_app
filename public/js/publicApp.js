@@ -7,8 +7,9 @@ weatherForm.addEventListener("submit", (e) => {
   messageOne.textContent = "Loading...";
   messageTwo.textContent = "";
   const location = search.value;
-  try {
-    async function display() {
+
+  async function display() {
+    try {
       await fetch(
         "https://weatherapp-xh2h.onrender.com/weather/?address=" + location
       ).then((res) => {
@@ -21,9 +22,9 @@ weatherForm.addEventListener("submit", (e) => {
           }
         });
       });
+    } catch (error) {
+      messageOne.textContent = "Your internet connection is broken";
     }
-  } catch (error) {
-    messageOne.textContent = "Your internet Connection is broken";
   }
   display();
 });
