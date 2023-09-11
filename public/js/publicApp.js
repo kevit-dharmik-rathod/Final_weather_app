@@ -12,6 +12,7 @@ weatherForm.addEventListener("submit", (e) => {
     try {
       await fetch(
         "https://weatherapp-xh2h.onrender.com/weather/?address=" + location
+        // "http://localhost:3000/weather/?address=" + location
       ).then((res) => {
         res.json().then((data) => {
           if (data.error) {
