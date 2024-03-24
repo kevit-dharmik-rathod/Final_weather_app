@@ -9,16 +9,18 @@ const forecast2 = async (latitude, longitude, callback) => {
         "&units=f"
     );
     if (fetchData.data.success === false) {
-      console.log("run in if condition");
       callback("Unable to find location. Try another Search", undefined);
     } else {
+      const TEMP_IN_CELSIUS = Math.floor(
+        (fetchData.data["current"]["temperature"] - 32) * (5 / 9)
+      );
       callback(
         undefined,
         fetchData.data["current"]["weather_description"] +
           " It is currently " +
-          fetchData.data["current"]["temperature"] +
+          TEMP_IN_CELSIUS +
           " degrees out. It feels like " +
-          fetchData.data["current"]["temperature"] +
+          TEMP_IN_CELSIUS +
           " degrees out"
       );
     }
